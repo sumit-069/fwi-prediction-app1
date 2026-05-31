@@ -2,17 +2,16 @@ from flask import Flask ,request,jsonify,render_template
 import numpy as np 
 import pandas as pd
 import pickle
-application=Flask(__name__)
-app=application
+import os
+
+application = Flask(__name__)
+app = application
 
 
-##import ridge  regressor and standard scaler pickle 
-ridge_model=pickle.load(open('models/ridge.pkl','rb'))
-standard_scaler=pickle.load(open("models/scaler.pkl",'rb'))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
-
-
+ridge_model = pickle.load(open(os.path.join(BASE_DIR, 'models/ridge.pkl'), 'rb'))
+standard_scaler = pickle.load(open(os.path.join(BASE_DIR, 'models/scaler.pkl'), 'rb'))
 
 @app.route("/")
 def index():
@@ -31,19 +30,12 @@ def predictdata():
         Classes=float(request.form.get('Classes'))
         Region=float(request.form.get('Region'))
 
-
         new_data_scaled=standard_scaler.transform([[Temperature,RH,Ws,Rain,FFMC,DMC,ISI,Classes,Region]])
         result=ridge_model.predict(new_data_scaled)
 
         return render_template('home.html',results=result[0])
-
-
     else:
         return render_template('home.html')
 
-
-
-
-
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run()
