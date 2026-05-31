@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI App</title>
+
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #667eea, #764ba2);
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        margin-top: 150px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .btn {
+        margin-top: 30px;
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        background: white;
+        color: #764ba2;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background: #ddd;
+        transform: scale(1.1);
+    }
+</style>
+
+
+</head>
+
+<body>
+
+
+<div class="container">
+    <h1>🔥 Welcome to FWI Prediction App</h1>
+    <p>Predict Fire Weather Index using Machine Learning</p>
+
+    <!-- Button to go to prediction page -->
+    <form action="{{ url_for('predictdata') }}" method="GET">
+        <button class="btn">🚀 Go to Prediction Page</button>
+    </form>
+</div>
+
+
+</body>
+</html>

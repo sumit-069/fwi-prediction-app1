@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #4facfe;
+            outline: none;
+            box-shadow: 0 0 5px #4facfe;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #4facfe;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #007bff;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            background: #e6f7ff;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🔥 FWI Prediction</h1>
+
+        <form action="{{ url_for('predictdata') }}" method="POST">
+
+            <label>Temperature</label>
+            <input type="number" step="any" name="Temperature" placeholder="Enter Temperature" required>
+
+            <label>RH (Relative Humidity)</label>
+            <input type="number" step="any" name="RH" placeholder="Enter RH" required>
+
+            <label>Ws (Wind Speed)</label>
+            <input type="number" step="any" name="Ws" placeholder="Enter Wind Speed" required>
+
+            <label>Rain</label>
+            <input type="number" step="any" name="Rain" placeholder="Enter Rainfall" required>
+
+            <label>FFMC</label>
+            <input type="number" step="any" name="FFMC" placeholder="Enter FFMC" required>
+
+            <label>DMC</label>
+            <input type="number" step="any" name="DMC" placeholder="Enter DMC" required>
+
+            <label>ISI</label>
+            <input type="number" step="any" name="ISI" placeholder="Enter ISI" required>
+
+            <label>Classes</label>
+            <input type="number" step="any" name="Classes" placeholder="Enter Class" required>
+
+            <label>Region</label>
+            <input type="number" step="any" name="Region" placeholder="Enter Region" required>
+
+            <button type="submit">🚀 Predict</button>
+        </form>
+
+        {% if results %}
+        <div class="result">
+            🔥 FWI Prediction: {{ results }}
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
